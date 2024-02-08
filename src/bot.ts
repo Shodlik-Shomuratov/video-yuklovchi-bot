@@ -38,10 +38,10 @@ bot.catch((error) => {
     console.log(error)
 })
 
-if (process.env.NODE_ENV === 'DEVELOPMENT') {
+if (config.NODE_ENV === 'DEVELOPMENT') {
     bot.start()
 } else {
-    const port = process.env.PORT || 3000
+    const port = config.PORT || 3000
     const app = express()
     app.use(express.json())
     app.use(`/${bot.token}`, webhookCallback(bot, 'express'))
