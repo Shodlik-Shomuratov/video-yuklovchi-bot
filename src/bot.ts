@@ -39,7 +39,11 @@ bot.catch((error) => {
 })
 
 if (config.NODE_ENV === 'DEVELOPMENT') {
-    bot.start()
+    bot.start({
+        onStart(botInfo) {
+            console.log('Bot started')
+        },
+    })
 } else {
     const port = config.PORT || 3000
     const app = express()
